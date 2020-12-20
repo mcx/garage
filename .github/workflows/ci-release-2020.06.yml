@@ -21,6 +21,7 @@ on:
   pull_request:
     branches:
       - 'release-2020.06'
+      - master
 
 jobs:
   build_docker_container:
