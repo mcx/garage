@@ -109,7 +109,7 @@ jobs:
           "${DOCKER_TAG}" \
           /bin/bash -c \
           '[ ! -f ${MJKEY_PATH} ] || mv ${MJKEY_PATH} ${MJKEY_PATH}.bak &&
-          pytest --cov=garage --cov-report=xml --reruns 1 -m \
+          pytest --cov=garage --cov-report=xml -m \
               "not nightly and not huge and not flaky and not large and not mujoco and not mujoco_long" --durations=20 &&
           for i in {1..5}; do
               bash <(curl -s https://codecov.io/bash --retry 5) -Z && break
@@ -151,7 +151,7 @@ jobs:
           "${DOCKER_TAG}" \
           /bin/bash -c \
           '[ ! -f ${MJKEY_PATH} ] || mv ${MJKEY_PATH} ${MJKEY_PATH}.bak &&
-          pytest --cov=garage --cov-report=xml --reruns 1 -m "large and not flaky" --durations=20 &&
+          pytest --cov=garage --cov-report=xml -m "large and not flaky" --durations=20 &&
           for i in {1..5}; do
               bash <(curl -s https://codecov.io/bash --retry 5) -Z && break
               if [ $i == 5 ]; then
@@ -191,7 +191,7 @@ jobs:
           --memory-swap 6500m \
           "${DOCKER_TAG}" \
           /bin/bash -c \
-          'pytest --cov=garage --cov-report=xml --reruns 1 -m "mujoco and not flaky" --durations=20 &&
+          'pytest --cov=garage --cov-report=xml -m "mujoco and not flaky" --durations=20 &&
           for i in {1..5}; do
               bash <(curl -s https://codecov.io/bash --retry 5) -Z && break
               if [ $i == 5 ]; then
@@ -231,7 +231,7 @@ jobs:
           --memory-swap 6500m \
           "${DOCKER_TAG}" \
           /bin/bash -c \
-          'pytest --cov=garage --cov-report=xml --reruns 1 -m "mujoco_long and not flaky" --durations=20 &&
+          'pytest --cov=garage --cov-report=xml -m "mujoco_long and not flaky" --durations=20 &&
           for i in {1..5}; do
               bash <(curl -s https://codecov.io/bash --retry 5) -Z && break
               if [ $i == 5 ]; then
@@ -270,7 +270,7 @@ jobs:
             $ci_env\
             --memory 6500m \
             --memory-swap 6500m \
-            "${DOCKER_TAG}" pytest -v --reruns 1 -m nightly
+            "${DOCKER_TAG}" pytest -v -m nightly
 
 
   verify_envs_conda:
