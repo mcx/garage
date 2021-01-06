@@ -247,7 +247,7 @@ jobs:
     name: Nightly Tests
     runs-on: ubuntu-latest
     needs: build_docker_container
-    if: github.event_name == 'schedule'
+#    if: github.event_name == 'schedule'
 
     steps:
       - uses: actions/checkout@v2
@@ -277,7 +277,7 @@ jobs:
     name: Verify Conda Environment Installation
     runs-on: ubuntu-latest
     needs: build_docker_container
-    if: github.event_name == 'schedule'
+#    if: github.event_name == 'schedule'
 
     steps:
       - uses: actions/checkout@v2
@@ -320,7 +320,7 @@ jobs:
     name: Verify Pipenv Environment Installation
     runs-on: ubuntu-latest
     needs: build_docker_container
-    if: github.event_name == 'schedule'
+#    if: github.event_name == 'schedule'
 
     steps:
       - uses: actions/checkout@v2
