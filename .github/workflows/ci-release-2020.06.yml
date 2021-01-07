@@ -310,7 +310,7 @@ jobs:
           ${CONDA} update -q conda && \
           ${CONDA} init && \
           ${CONDA} info -a && \
-          ${CONDA} create -n garage-ci python=3.6 pip -y && \
+          ${CONDA} create -n garage-ci python=3.5 pip -y && \
           ${GARAGE_BIN}/pip install --upgrade pip setuptools && \
           ${GARAGE_BIN}/pip install dist/garage.tar.gz[all,dev] && \
           ${GARAGE_BIN}/pylint --disable=all --enable=import-error garage'
@@ -347,7 +347,7 @@ jobs:
           touch \${MJKEY_PATH} && \
           pip3 install --upgrade pip setuptools && \
           pip3 install pipenv && \
-          pipenv --python=3.6 && \
+          pipenv --python=3.5 && \
           pipenv install dist/garage.tar.gz[all,dev] && \
           pipenv graph && \
           # pylint will verify all imports work
@@ -364,10 +364,10 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: release-2020.06
-      - name: Set up Python 3.6
+      - name: Set up Python 3.5
         uses: actions/setup-python@v1
         with:
-          python-version: 3.6
+          python-version: 3.5
       - name: Update Version
         run: echo ${GITHUB_REF##*/} > VERSION
       - name: Setup Distribution
