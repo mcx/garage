@@ -369,7 +369,7 @@ jobs:
         with:
           python-version: 3.5
       - name: Update Version
-        run: echo ${GITHUB_REF##*/} > VERSION
+        run: echo ${GITHUB_REF##*/}
       - name: Setup Distribution
         run: >-
           python setup.py sdist
